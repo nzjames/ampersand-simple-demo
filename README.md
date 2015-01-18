@@ -24,7 +24,7 @@ Add `server` script to package.json
 ```
   "scripts": {
     "server": "http-server -p 8000",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    ...
   },
 ```
 
@@ -58,4 +58,35 @@ Commit files
 ```
 $ git add .
 $ git commit -am "initial commit"
+```
+
+## Add app.js
+```
+module.exports = {
+    letsGo: function() {
+        console.log("lets Go!");
+    }
+};
+
+module.exports.letsGo();
+```
+
+Add watchify (or browserify) to build app.js to index.js
+```
+$ npm install --save-dev watchify
+```
+
+Add watch-js script and start script to package.json
+```
+  "scripts": {
+    "start": "npm run server & npm run watch-js",
+    "watch-js": "watchify app.js -o index.js -dv",
+    "server": "http-server -p 8000",
+    ...
+  },
+```
+Add script to the head index.html
+```
+    <script src="index.js"></script>
+```
 

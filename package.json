@@ -4,12 +4,15 @@
   "description": "A simple ampersand demo app",
   "main": "index.js",
   "scripts": {
+    "start": "npm run server & npm run watch-js",
+    "watch-js": "watchify app.js -o index.js -dv",
     "server": "http-server -p 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "http-server": "^0.7.4"
+    "http-server": "^0.7.4",
+    "watchify": "^2.2.1"
   }
 }
