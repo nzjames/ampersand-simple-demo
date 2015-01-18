@@ -14,5 +14,9 @@
   "devDependencies": {
     "http-server": "^0.7.4",
     "watchify": "^2.2.1"
+  },
+  "dependencies": {
+    "ampersand-model": "^4.0.3",
+    "ampersand-view": "^7.2.0"
   }
 }

@@ -90,3 +90,5 @@ Add script to the head index.html
     <script src="index.js"></script>
 ```
 
+## Add a stylesheet
+
