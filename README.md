@@ -53,3 +53,9 @@ $  git init
 Add ignores
 ```
 $ echo "node_modules" >> .gitignore
+```
+Commit files
+```
+$ git add .
+$ git commit -am "initial commit"
+
