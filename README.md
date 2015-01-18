@@ -90,5 +90,65 @@ Add script to the head index.html
     <script src="index.js"></script>
 ```
 
+Ignore the built JavaScript
+```
+$ echo "index.js" >> .gitignore 
+```
+
 ## Add a stylesheet
 
+styles.css
+
+
+## Add Model and view
+
+create a new model header-model.js
+```
+var AmpersandModel = require('ampersand-model');
+
+module.exports = AmpersandModel.extend({
+    props: {
+        rightLabel: ['string', true, 'Right Label'],
+        leftLabel: ['string', true, 'Left Label'],
+        header: ['string', true, 'Ampersand Demo']
+    }
+});
+```
+and a view header-view.js
+```
+var View = require('ampersand-view');
+
+module.exports = View.extend({
+    template: '<div><a data-hook="leftlabel"></a><h1 class="main-header" data-hook="header"></h1><a data-hook="rightlabel"></a></div>',
+    bindings: {
+        'model.leftLabel': '[data-hook=leftlabel]',
+        'model.rightLabel': '[data-hook=rightlabel]',
+        'model.header': '[data-hook=header]'
+    }
+});
+```
+Instance the Model and View in the Main app.js
+```
+var HeaderModel = require('./header-model');
+var HeaderView = require('./header-view');
+
+var headerModel = new HeaderModel({
+    leftLabel: 'Back',
+    rightLabel: 'Add',
+    header: 'Lets Go!'
+});
+
+var headerView = new HeaderView({
+    model: headerModel
+});
+
+```
+And render the header via the `letsGo` method
+```
+    letsGo: function() {
+        ...
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('header').appendChild(headerView.render().el);
+        });
+    }
+```
