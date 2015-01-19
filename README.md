@@ -8,7 +8,7 @@ Topics:
 
 ## Init
 
-```
+```bash
 $ npm init
 ```
 
@@ -16,12 +16,12 @@ Follow prompts to get a starting package.json
 
 ## Add http-server
 
-```
+```bash
 $ npm install --save-dev http-server
 ```
 
 Add `server` script to package.json
-```
+```javascript
   "scripts": {
     "server": "http-server -p 8000",
     ...
@@ -29,7 +29,7 @@ Add `server` script to package.json
 ```
 
 ## Add index.html
-```
+```html
 <!doctype html>
 <html>
 <head>
@@ -41,27 +41,27 @@ Add `server` script to package.json
 ```
 
 ## Test server
-```
+```bash
 $ npm run server
 ```
 Open http://localhost:8000 in your browser.
 
 ## Create git repo
-```
+```bash
 $  git init
 ```
 Add ignores
-```
+```bash
 $ echo "node_modules" >> .gitignore
 ```
 Commit files
-```
+```bash
 $ git add .
 $ git commit -am "initial commit"
 ```
 
 ## Add app.js
-```
+```javascript
 module.exports = {
     letsGo: function() {
         console.log("lets Go!");
@@ -72,12 +72,12 @@ module.exports.letsGo();
 ```
 
 Add watchify (or browserify) to build app.js to index.js
-```
+```bash
 $ npm install --save-dev watchify
 ```
 
 Add watch-js script and start script to package.json
-```
+```json
   "scripts": {
     "start": "npm run server & npm run watch-js",
     "watch-js": "watchify app.js -o index.js -dv",
@@ -86,12 +86,12 @@ Add watch-js script and start script to package.json
   },
 ```
 Add script to the head index.html
-```
-    <script src="index.js"></script>
+```html
+<script src="index.js"></script>
 ```
 
 Ignore the built JavaScript
-```
+```bash
 $ echo "index.js" >> .gitignore 
 ```
 
@@ -103,7 +103,7 @@ styles.css
 ## Add Model and view
 
 create a new model header-model.js
-```
+```javascript
 var AmpersandModel = require('ampersand-model');
 
 module.exports = AmpersandModel.extend({
@@ -115,7 +115,7 @@ module.exports = AmpersandModel.extend({
 });
 ```
 and a view header-view.js
-```
+```javascript
 var View = require('ampersand-view');
 
 module.exports = View.extend({
@@ -128,7 +128,7 @@ module.exports = View.extend({
 });
 ```
 Instance the Model and View in the Main app.js
-```
+```javascript
 var HeaderModel = require('./header-model');
 var HeaderView = require('./header-view');
 
@@ -144,7 +144,7 @@ var headerView = new HeaderView({
 
 ```
 And render the header via the `letsGo` method
-```
+```javascript
     letsGo: function() {
         ...
         document.addEventListener('DOMContentLoaded', function () {
